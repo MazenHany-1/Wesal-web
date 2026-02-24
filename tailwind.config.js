@@ -1,11 +1,63 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: "class",
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: 
+      {
+          light: {
+          background: "#ffffff",
+          foreground: "#1a1a1a",
+          card: "#ffffff",
+          "card-foreground": "#1a1a1a",
+          popover: "#ffffff",
+          "popover-foreground": "#1a1a1a",
+          secondary: "#f5f5f5",
+          "secondary-foreground": "#1a1a1a",
+          muted: "#f8f8f8",
+          "muted-foreground": "#6b6b6b",
+          accent: "#C8A85A",
+          "accent-foreground": "#0a0a0a",
+          destructive: "#d4183d",
+          "destructive-foreground": "#ffffff",
+          border: "#e5e5e5",
+          input: "#f8f8f8",
+          ring: "#C8A85A",
+          darkbg: "#0E3B2E",
+          cream: "#E8E2D6",
+          hero: "#3a7a64",
+          "hero-end": "#1a5441",
+        },
+         dark: {
+          background: "#0a0a0a",
+          foreground: "#ffffff",
+          card: "#1a1a1a",
+          "card-foreground": "#ffffff",
+          popover: "#1a1a1a",
+          "popover-foreground": "#ffffff",
+          secondary: "#2a2a2a",
+          "secondary-foreground": "#ffffff",
+          muted: "#1a1a1a",
+          "muted-foreground": "#a0a0a0",
+          accent: "#C8A85A",
+          "accent-foreground": "#0a0a0a",
+          destructive: "#d4183d",
+          "destructive-foreground": "#ffffff",
+          border: "#2a2a2a",
+          input: "#2a2a2a",
+          ring: "#C8A85A",
+          darkbg: "#071A1F",
+          cream: "#E8E2D6",
+          hero: "#2d5a4d",
+          "hero-end": "#0E3B2E",
+        },
+
+      }
+    },
   },
   plugins: [],
 }
