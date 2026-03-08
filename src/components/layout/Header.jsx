@@ -1,4 +1,6 @@
 import React from "react";
+import { FaSun,FaMoon } from "react-icons/fa6";
+
 import {
   Navbar,
   Collapse,
@@ -27,6 +29,7 @@ import {
 } from "@heroicons/react/24/solid";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
+import useTheme from "../../Hooks/usetheme";
 
 const profileMenuItems = [
   { label: "My Profile", icon: UserCircleIcon },
@@ -128,6 +131,11 @@ function NavList() {
           Workshop
         </ListItem>
       </Link>
+      <Link to="/About">
+        <ListItem className="flex items-center gap-2 py-2 pr-4 font-medium text-light-cream">
+          About Us
+        </ListItem>
+      </Link>
       {isAuthenticated && (
         <Link to="/profile">
           <ListItem className="flex items-center gap-2 py-2 pr-4 font-medium text-gray-900">
@@ -150,10 +158,12 @@ const Header = () => {
   const [openNav, setOpenNav] = React.useState(false);
   const { isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
+  const {theme, mode}=useTheme();
 
   React.useEffect(() => {
-    window.addEventListener("resize", () =>
-      window.innerWidth >= 960 && setOpenNav(false)
+    window.addEventListener(
+      "resize",
+      () => window.innerWidth >= 960 && setOpenNav(false),
     );
   }, []);
 
@@ -165,7 +175,6 @@ const Header = () => {
   return (
     <Navbar className="w-full max-w-none rounded-none px-6 py-2 sticky top-0 z-50 bg-light-darkbg">
       <div className="flex items-center justify-between text-blue-gray-900">
-
         {/* Logo */}
         <Link to="/">
           <img src="/Logo.png" alt="WESAL" className="h-28 w-auto" />
@@ -178,16 +187,27 @@ const Header = () => {
 
         {/* Login / Avatar - desktop */}
         <div className="hidden gap-2 lg:flex items-center">
+          <IconButton
+            size="sm"
+            variant="text"
+            onClick={mode}
+            className="text-light-cream hover:bg-white/10"
+          >
+            {theme=="dark" ? <FaSun className="h-4 w-4" /> : <FaMoon className="h-4 w-4" />}
+          </IconButton>
           {isAuthenticated ? (
-          
             <AvatarWithUserDropdown />
           ) : (
             <>
               <Link to="/register">
-                <Button color="green" size="sm">GET STARTED</Button>
+                <Button color="green" size="sm">
+                  GET STARTED
+                </Button>
               </Link>
               <Link to="/login">
-                <Button color="amber" size="sm">LOG IN</Button>
+                <Button color="amber" size="sm">
+                  LOG IN
+                </Button>
               </Link>
             </>
           )}
@@ -210,16 +230,29 @@ const Header = () => {
       {/* Mobile menu */}
       <Collapse open={openNav}>
         <NavList />
+        <Button
+            size="xl"
+            variant="text"
+            onClick={mode}
+            className="text-light-cream hover:bg-white/10 rounded-full"
+          >
+            {theme=="dark" ?<span className="flex gap-2"><FaSun className="h-4 w-4" /> Light</span>  : <span className="flex gap-2"> <FaMoon className="h-4 w-4" /> DArk</span> }
+          </Button>
         <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden">
+          
           {isAuthenticated ? (
             <AvatarWithUserDropdown />
           ) : (
             <>
               <Link to="/register" className="w-full">
-                <Button color="green" size="sm" fullWidth>Get Started</Button>
+                <Button color="green" size="sm" fullWidth>
+                  Get Started
+                </Button>
               </Link>
               <Link to="/login" className="w-full">
-                <Button color="amber" size="sm" fullWidth>Log In</Button>
+                <Button color="amber" size="sm" fullWidth>
+                  Log In
+                </Button>
               </Link>
             </>
           )}
