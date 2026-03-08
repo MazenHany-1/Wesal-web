@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout";
-import ProtectedRoute from "./components/ProtectedRoute";
-import AdminRoute from "./components/AdminRoute";
+import Layout from "./components/layout/Layout";
+import ProtectedRoute from "./components/layout/ProtectedRoute";
+import AdminRoute from "./components/layout/AdminRoute";
 
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import Courses from "./pages/Courses";
 import Dashboard from "./pages/Dashboard";
 import Internship from "./pages/Internship";
@@ -11,7 +11,8 @@ import Notfound from "./pages/Notfound";
 import Profile from "./pages/Profile";
 import Workshop from "./pages/Workshop";
 import Login from "./pages/Auth/Login";
-import Register from "./pages/Auth/Register";
+import Register from "./pages/Auth/Siginup";
+import About from "./pages/About/About"
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
            <Route path="/internship" element={<Internship />} />
             <Route path="/workshop" element={<Workshop />} />
             <Route path="/courses" element={<Courses />} />
+            <Route path="/About" element={<About />} />
 
           {/* Protected - logged in users */}
           <Route element={<ProtectedRoute />}>
