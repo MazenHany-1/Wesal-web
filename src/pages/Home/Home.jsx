@@ -192,11 +192,18 @@ function Home() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {trendingOpportunities.map((item) => (
-              <div key={item.id} className="bg-light-card dark:bg-dark-card rounded-xl p-6 hover:bg-light-secondary dark:hover:bg-dark-secondary transition-colors cursor-pointer border border-light-border dark:border-dark-border">
-                <span className="inline-block text-xs px-3 py-1 rounded-xl bg-light-accent/20 text-light-accent">{item.category}</span>
-                <h4 className="text-light-foreground dark:text-dark-foreground mb-4 mt-4 leading-snug">{item.title}</h4>
+              <div
+                key={item.id}
+                className="bg-light-card dark:bg-dark-card rounded-xl p-6 hover:bg-light-secondary dark:hover:bg-dark-secondary transition-colors cursor-pointer border border-light-border dark:border-dark-border"
+              >
+                <span className="inline-block text-xs px-3 py-1 rounded-xl bg-light-accent/20 text-light-accent">
+                  {item.category}
+                </span>
+                <h4 className="text-light-foreground dark:text-dark-foreground mb-4 mt-4 leading-snug">
+                  {item.title}
+                </h4>
                 <div className="flex flex-wrap gap-2 text-light-muted-foreground dark:text-dark-muted-foreground ">
-                  {item.duration &&(
+                  {item.duration && (
                     <span className="flex items-center gap-1">
                       <Clock className="w-4 h-4" />
                       {item.duration}
@@ -215,7 +222,7 @@ function Home() {
           </div>
         </div>
       </section>
-       <div className="py-10 dark:bg-dark-background bg-light-background" />
+      <div className="py-10 dark:bg-dark-background bg-light-background" />
     </div>
   );
 }
