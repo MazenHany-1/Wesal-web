@@ -13,6 +13,7 @@ import Workshop from "./pages/Workshop";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Siginup";
 import About from "./pages/About/About"
+import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="/workshop" element={<Workshop />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/About" element={<About />} />
+            <Route path="/Contact" element={<Contact />} />
 
           {/* Protected - logged in users */}
           <Route element={<ProtectedRoute />}>

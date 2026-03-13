@@ -136,6 +136,11 @@ function NavList() {
           About Us
         </ListItem>
       </Link>
+      <Link to="/Contact">
+        <ListItem className="flex items-center gap-2 py-2 pr-4 font-medium text-light-cream">
+          Contact us
+        </ListItem>
+      </Link>
       {isAuthenticated && (
         <Link to="/profile">
           <ListItem className="flex items-center gap-2 py-2 pr-4 font-medium text-gray-900">
