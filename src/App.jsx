@@ -19,10 +19,6 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-
-        {/* Auth — no header/footer */}
-        
-
         {/* With Header & Footer */}
         <Route element={<Layout />}>
         <Route path="/login" element={<Login />} />
