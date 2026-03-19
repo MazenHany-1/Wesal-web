@@ -164,7 +164,7 @@ function Workshop() {
       </section>
 
       {/* Featured */}
-      <section className="relative z-10 -mt-16 bg-light-background dark:bg-dark-background">
+      <section className="relative z-10 mt-16 bg-light-background dark:bg-dark-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="flex items-center gap-2 mb-6">
             <TrendingUp className="w-5 h-5 text-light-accent" />
