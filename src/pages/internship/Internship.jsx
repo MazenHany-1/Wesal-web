@@ -4,7 +4,7 @@ import {
   Briefcase, MapPin, Clock, Signal,
   Search, Filter, X, Star, TrendingUp,
 } from "lucide-react";
-import { internships, featuredInternships } from "./internshipsData";
+import { internships, featuredInternships } from "../internship/internshipsData"
 
 const fields    = ["All Fields", "Engineering", "Design", "Data", "Marketing", "Business"];
 const locations = ["All Locations", "Remote", "On-site", "Hybrid"];
@@ -160,7 +160,7 @@ function Internship() {
       </section>
 
       {/* Featured */}
-      <section className="relative z-10 -mt-16 bg-light-background dark:bg-dark-background">
+      <section className="relative z-10 mt-16 bg-light-background dark:bg-dark-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="flex items-center gap-2 mb-6">
             <TrendingUp className="w-5 h-5 text-light-accent" />

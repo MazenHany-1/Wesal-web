@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { internships } from "./internshipsData";
+import { internships } from "../internship/internshipsData";
 import {
   ArrowLeft, MapPin, Clock, Signal, Briefcase,
   DollarSign, CheckCircle2, ChevronRight,
@@ -106,7 +106,7 @@ function InternshipDetail() {
       </section>
 
       {/* Main Content */}
-      <div className="container mx-auto max-w-5xl px-4 -mt-16 relative z-10 pb-16">
+      <div className="container mx-auto max-w-5xl px-4 mt-16 relative z-10 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
           {/* Left Column */}
