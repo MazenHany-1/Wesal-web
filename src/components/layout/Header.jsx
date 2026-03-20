@@ -1,33 +1,14 @@
 import React from "react";
-import { FaSun,FaMoon } from "react-icons/fa6";
-
+import { FaSun, FaMoon } from "react-icons/fa6";
 import {
-  Navbar,
-  Collapse,
-  Typography,
-  Button,
-  IconButton,
-  List,
-  ListItem,
-  Menu,
-  MenuHandler,
-  MenuList,
-  MenuItem,
-  Avatar,
+  Navbar, Collapse, Typography, Button, IconButton,
+  List, ListItem, Menu, MenuHandler, MenuList, MenuItem, Avatar,
 } from "@material-tailwind/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import {
-  ChevronDownIcon,
-  Bars3Icon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
-import {
-  Cog6ToothIcon,
-  InboxArrowDownIcon,
-  LifebuoyIcon,
-  PowerIcon,
-  UserCircleIcon,
+  Cog6ToothIcon, InboxArrowDownIcon, LifebuoyIcon, PowerIcon, UserCircleIcon,
 } from "@heroicons/react/24/solid";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
 import useTheme from "../../Hooks/usetheme";
 
@@ -57,18 +38,10 @@ function AvatarWithUserDropdown() {
   return (
     <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
       <MenuHandler>
-        <Button
-          variant="text"
-          color="blue-gray"
-          className="flex items-center rounded-full p-0"
-        >
+        <Button variant="text" color="blue-gray" className="flex items-center rounded-full p-0">
           <Avatar
-            variant="circular"
-            size="md"
-            alt="user"
-            withBorder={true}
-            color="blue-gray"
-            className="p-0.5"
+            variant="circular" size="md" alt="user"
+            withBorder={true} color="blue-gray" className="p-0.5"
             src="https://docs.material-tailwind.com/img/face-2.jpg"
           />
         </Button>
@@ -80,22 +53,13 @@ function AvatarWithUserDropdown() {
             <MenuItem
               key={label}
               onClick={() => handleMenuClick(label)}
-              className={`flex items-center gap-2 rounded ${
-                isLastItem
-                  ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
-                  : ""
-              }`}
+              className={`flex items-center gap-2 rounded ${isLastItem ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10" : ""}`}
             >
               {React.createElement(icon, {
                 className: `h-4 w-4 ${isLastItem ? "text-red-500" : ""}`,
                 strokeWidth: 2,
               })}
-              <Typography
-                as="span"
-                variant="small"
-                className="font-normal"
-                color={isLastItem ? "red" : "inherit"}
-              >
+              <Typography as="span" variant="small" className="font-normal" color={isLastItem ? "red" : "inherit"}>
                 {label}
               </Typography>
             </MenuItem>
@@ -105,55 +69,43 @@ function AvatarWithUserDropdown() {
     </Menu>
   );
 }
-
-function NavList() {
+function NavList({ closeMenu }) {
   const { isAuthenticated, isAdmin } = useAuth();
+  const navigate = useNavigate();
+  const handleNav = (path) => {
+    navigate(path);
+    closeMenu();
+  };
 
   return (
     <List className="mb-6 mt-4 p-0 lg:mb-0 lg:mt-0 lg:flex-row lg:p-1">
-      <Link to="/">
-        <ListItem className="flex items-center gap-2 py-2 pr-4 font-medium text-light-cream">
-          Home
-        </ListItem>
-      </Link>
-      <Link to="/courses">
-        <ListItem className="flex items-center gap-2 py-2 pr-4 font-medium text-light-cream">
-          Courses
-        </ListItem>
-      </Link>
-      <Link to="/internship">
-        <ListItem className="flex items-center gap-2 py-2 pr-4 font-medium text-light-cream">
-          Internship
-        </ListItem>
-      </Link>
-      <Link to="/workshop">
-        <ListItem className="flex items-center gap-2 py-2 pr-4 font-medium text-light-cream">
-          Workshop
-        </ListItem>
-      </Link>
-      <Link to="/About">
-        <ListItem className="flex items-center gap-2 py-2 pr-4 font-medium text-light-cream">
-          About Us
-        </ListItem>
-      </Link>
-      <Link to="/Contact">
-        <ListItem className="flex items-center gap-2 py-2 pr-4 font-medium text-light-cream">
-          Contact us
-        </ListItem>
-      </Link>
+      <ListItem onClick={() => handleNav("/")} className="flex items-center gap-2 py-2 pr-4 font-medium text-light-cream cursor-pointer">
+        Home
+      </ListItem>
+      <ListItem onClick={() => handleNav("/courses")} className="flex items-center gap-2 py-2 pr-4 font-medium text-light-cream cursor-pointer">
+        Courses
+      </ListItem>
+      <ListItem onClick={() => handleNav("/internship")} className="flex items-center gap-2 py-2 pr-4 font-medium text-light-cream cursor-pointer">
+        Internship
+      </ListItem>
+      <ListItem onClick={() => handleNav("/workshop")} className="flex items-center gap-2 py-2 pr-4 font-medium text-light-cream cursor-pointer">
+        Workshop
+      </ListItem>
+      <ListItem onClick={() => handleNav("/About")} className="flex items-center gap-2 py-2 pr-4 font-medium text-light-cream cursor-pointer">
+        About Us
+      </ListItem>
+      <ListItem onClick={() => handleNav("/Contact")} className="flex items-center gap-2 py-2 pr-4 font-medium text-light-cream cursor-pointer">
+        Contact us
+      </ListItem>
       {isAuthenticated && (
-        <Link to="/profile">
-          <ListItem className="flex items-center gap-2 py-2 pr-4 font-medium text-gray-900">
-            Profile
-          </ListItem>
-        </Link>
+        <ListItem onClick={() => handleNav("/profile")} className="flex items-center gap-2 py-2 pr-4 font-medium text-gray-900 cursor-pointer">
+          Profile
+        </ListItem>
       )}
       {isAuthenticated && isAdmin() && (
-        <Link to="/dashboard">
-          <ListItem className="flex items-center gap-2 py-2 pr-4 font-medium text-gray-900">
-            Dashboard
-          </ListItem>
-        </Link>
+        <ListItem onClick={() => handleNav("/dashboard")} className="flex items-center gap-2 py-2 pr-4 font-medium text-gray-900 cursor-pointer">
+          Dashboard
+        </ListItem>
       )}
     </List>
   );
@@ -161,69 +113,41 @@ function NavList() {
 
 const Header = () => {
   const [openNav, setOpenNav] = React.useState(false);
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
-  const {theme, mode}=useTheme();
+  const { theme, mode } = useTheme();
 
   React.useEffect(() => {
-    window.addEventListener(
-      "resize",
-      () => window.innerWidth >= 960 && setOpenNav(false),
-    );
+    window.addEventListener("resize", () => window.innerWidth >= 960 && setOpenNav(false));
   }, []);
-
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
 
   return (
     <Navbar className="w-full max-w-none rounded-none border-light-darkbg px-6 py-2 sticky top-0 z-50 bg-light-darkbg">
       <div className="flex items-center justify-between text-blue-gray-900">
-        {/* Logo */}
-        <Link to="/">
+        <div onClick={() => navigate("/")} className="cursor-pointer">
           <img src="/Logo.png" alt="WESAL" className="h-28 w-auto" />
-        </Link>
-
-        {/* Nav Links - desktop */}
-        <div className="hidden lg:block">
-          <NavList />
         </div>
-
-        {/* Login / Avatar - desktop */}
+        <div className="hidden lg:block">
+          <NavList closeMenu={() => {}} />
+        </div>
         <div className="hidden gap-2 lg:flex items-center">
-          <IconButton
-            size="sm"
-            variant="text"
-            onClick={mode}
-            className="text-light-cream hover:bg-white/10"
-          >
-            {theme=="dark" ? <FaSun className="h-4 w-4" /> : <FaMoon className="h-4 w-4" />}
+          <IconButton size="sm" variant="text" onClick={mode} className="text-light-cream hover:bg-white/10">
+            {theme === "dark" ? <FaSun className="h-4 w-4" /> : <FaMoon className="h-4 w-4" />}
           </IconButton>
           {isAuthenticated ? (
             <AvatarWithUserDropdown />
           ) : (
             <>
-              <Link to="/register">
-                <Button color="green" size="sm">
-                  GET STARTED
-                </Button>
-              </Link>
-              <Link to="/login">
-                <Button color="amber" size="sm">
-                  LOG IN
-                </Button>
-              </Link>
+              <div onClick={() => navigate("/register")}>
+                <Button color="green" size="sm">GET STARTED</Button>
+              </div>
+              <div onClick={() => navigate("/login")}>
+                <Button color="amber" size="sm">LOG IN</Button>
+              </div>
             </>
           )}
         </div>
-
-        {/* Mobile toggle */}
-        <IconButton
-          variant="text"
-          className="lg:hidden"
-          onClick={() => setOpenNav(!openNav)}
-        >
+        <IconButton variant="text" className="lg:hidden" onClick={() => setOpenNav(!openNav)}>
           {openNav ? (
             <XMarkIcon className="h-6 w-6 text-white" strokeWidth={2} />
           ) : (
@@ -231,34 +155,26 @@ const Header = () => {
           )}
         </IconButton>
       </div>
-
-      {/* Mobile menu */}
       <Collapse open={openNav}>
-        <NavList />
-        <Button
-            size="xl"
-            variant="text"
-            onClick={mode}
-            className="text-light-cream hover:bg-white/10 rounded-full"
-          >
-            {theme=="dark" ?<span className="flex gap-2"><FaSun className="h-4 w-4" /> Light</span>  : <span className="flex gap-2"> <FaMoon className="h-4 w-4" /> DArk</span> }
-          </Button>
+        <NavList closeMenu={() => setOpenNav(false)} />
+        <Button size="xl" variant="text" onClick={mode} className="text-light-cream hover:bg-white/10 rounded-full">
+          {theme === "dark" ? (
+            <span className="flex gap-2"><FaSun className="h-4 w-4" /> Light</span>
+          ) : (
+            <span className="flex gap-2"><FaMoon className="h-4 w-4" /> Dark</span>
+          )}
+        </Button>
         <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden">
-          
           {isAuthenticated ? (
             <AvatarWithUserDropdown />
           ) : (
             <>
-              <Link to="/register" className="w-full">
-                <Button color="green" size="sm" fullWidth>
-                  Get Started
-                </Button>
-              </Link>
-              <Link to="/login" className="w-full">
-                <Button color="amber" size="sm" fullWidth>
-                  Log In
-                </Button>
-              </Link>
+              <div className="w-full" onClick={() => { navigate("/register"); setOpenNav(false); }}>
+                <Button color="green" size="sm" fullWidth>Get Started</Button>
+              </div>
+              <div className="w-full" onClick={() => { navigate("/login"); setOpenNav(false); }}>
+                <Button color="amber" size="sm" fullWidth>Log In</Button>
+              </div>
             </>
           )}
         </div>

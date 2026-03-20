@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import { Search, Clock, BookOpen } from "lucide-react";
+=======
+import React from 'react';
+>>>>>>> 65839a5f0dbaaf40cf1904462e654157d55e311a
 
 function Courses() {
   const [selectedLevel, setSelectedLevel] = useState("all");
@@ -109,6 +113,7 @@ function Courses() {
   });
 
   return (
+<<<<<<< HEAD
     <div className="min-h-screen bg-[var(--background)] py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         {/* Header */}
@@ -236,3 +241,10 @@ function Courses() {
 }
 
 export default Courses;
+=======
+    <div>Courses</div>
+  );
+}
+
+export default Courses;
+>>>>>>> 65839a5f0dbaaf40cf1904462e654157d55e311a
